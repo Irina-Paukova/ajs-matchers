@@ -1,18 +1,32 @@
-import colorIndication from '../app';
+import sorter from '../app';
 
-test.each([
-  [60, 'healthy'],
-  [50.01, 'healthy'],
-  [50, 'wounded'],
-  [49.99, 'wounded'],
-  [25, 'wounded'],
-  [15.01, 'wounded'],
-  [15, 'wounded'],
-  [14.99, 'critical'],
-  [5, 'critical'],
-  [0, 'critical'],
-])(('Check health status'),
-  (health, expected) => {
-    const result = colorIndication({ name: 'Маг', health });
-    expect(result).toBe(expected);
-  });
+const characterInfo1 = [
+  { name: 'мечник', health: 10 },
+  { name: 'маг', health: 100 },
+  { name: 'лучник', health: 80 },
+];
+
+const characterInfo2 = [
+  { name: 'мечник', health: 100 },
+  { name: 'маг', health: 10 },
+  { name: 'лучник', health: 80 },
+];
+
+const characterInfo3 = [
+  { name: 'мечник', health: 100 },
+  { name: 'маг', health: 100 },
+  { name: 'лучник', health: 80 },
+];
+
+
+test('sorting characterInfo1', () => {
+  expect(characterInfo1.sort(sorter)).toEqual(characterInfo1);
+});
+
+test('sorting characterInfo2', () => {
+  expect(characterInfo2.sort(sorter)).toEqual(characterInfo2);
+});
+
+test('sorting characterInfo3', () => {
+  expect(characterInfo3.sort(sorter)).toEqual(characterInfo3);
+});

@@ -1,10 +1,11 @@
-function colorIndication(character) {
-  if (character.health > 50) {
-    return 'healthy';
-  } if (character.health < 15) {
-    return 'critical';
+function sorter(a, b) {
+  if (a.health > b.health) {
+    return 1;
   }
-  return 'wounded';
+  if (a.health < b.health) {
+    return -1;
+  }
+  return 0;
 }
 
-export default colorIndication;
+export default sorter;
